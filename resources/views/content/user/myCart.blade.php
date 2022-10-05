@@ -89,7 +89,7 @@
 
                     <th class="header_gia"> Giá </th>
                     <th class="header_tuong_tac"> Huỷ</th>
-                    <th class="header_mua"> Mua </th>
+                    {{-- <th class="header_mua"> Mua </th> --}}
                 </tr>
                 @php
                     $total = 0;
@@ -103,9 +103,9 @@
                         <th> {{ Session::get('author_course')[$i] }} </th>
                         <th> {{ number_format(Session::get('price_course')[$i], 0, ',', ' ') }} VND</th>
                         <th><a href="{{ route('home.unOrderCourse', Session::get('id_course')[$i]) }}">xoá</a></th>
-                        <th data-id={{ Session::get('id_course')[$i] }} data-price={{ Session::get('price_course')[$i] }}>
+                        {{-- <th data-id={{ Session::get('id_course')[$i] }} data-price={{ Session::get('price_course')[$i] }}>
                             <input class="check-value" type="checkbox">
-                        </th>
+                        </th> --}}
                     </tr>
                     @php
                         $total += Session::get('price_course')[$i];
@@ -128,9 +128,10 @@
                 <button id="btn-buy"
                 @if (!Session::has('id'))
                     type="button" onclick="alert('Ban Phai Dang Nhap')"
+                    style="cursor: not-allowed"
+                @else
+                    type="submit"
                 @endif
-                style="cursor: not-allowed"
-                type="button"
             ><span>Mua khóa học</span></button>
         </form>
         <p class="description">

@@ -121,8 +121,8 @@ class homeViewController extends Controller
     }
 
     public function buyCourse(Request $request){
-        $id_course = explode(",", $request->get('id-buy'));
-        $id_oder = explode(",", $request->get('id-not-buy'));
+        $id_oder = explode(",", $request->get('id-buy'));
+        $id_course = explode(",", $request->get('id-not-buy'));
         for ($i = 0; $i < count($id_course); $i++){
             $course = course::find($id_course[$i]);
             $order = order::query()
